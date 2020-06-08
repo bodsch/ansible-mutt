@@ -20,11 +20,7 @@ mutt_mutt_trash: +Trash
 # mutt_local_drafts: Drafts
 # mutt_local_sent: Sent
 
-mutt_signature: |
-  I Me <myaddress@mail.tld>
-  The stuff I do
-  The company I work for
-  Where to find them
+mutt_signature: ""
 
 mutt_aliases:
   - intern Intern <intern@matrix.lan>
