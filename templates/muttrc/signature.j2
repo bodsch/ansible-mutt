@@ -1,0 +1,5 @@
+{% if mutt_signature is defined %}
+{{ mutt_signature }}
+{% else %}
+{{ mutt_realname }} <{{ mutt_from }}>
+{% endif %}

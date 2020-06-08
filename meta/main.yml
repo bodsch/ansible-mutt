@@ -1,0 +1,14 @@
+---
+
+galaxy_info:
+  role_name: mutt
+  author: Bodo Schulz
+  description: install and configure mutt
+  license: Apache
+  min_ansible_version: 2.8
+  platforms: []
+  galaxy_tags:
+    - system
+    - mail
+
+dependencies: []

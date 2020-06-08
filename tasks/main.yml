@@ -1,0 +1,48 @@
+---
+
+- name: install mutt
+  package:
+    name: mutt
+    state: present
+
+- name: Create .mutt directories
+  file:
+    path: "{{ mutt_home_dir }}/{{ item }}"
+    state: directory
+    mode: 0750
+  loop:
+    - .mutt
+    - .mutt/cache
+    - .mutt/messages
+    - .mutt/tmp
+
+- name: create muttrc
+  template:
+    src: muttrc/muttrc.j2
+    dest: "{{ mutt_home_dir }}/.muttrc"
+    mode: 0755
+
+- name: Copy status script
+  template:
+    src: mail.sh.j2
+    dest: /usr/local/bin/mail.sh
+    mode: 0755
+
+- name: Configure signatures
+  template:
+    src: muttrc/signature.j2
+    dest: "{{ mutt_home_dir }}/.mutt/signature"
+    # mode: 0750
+
+- name: Configure aliases
+  template:
+    src: muttrc/aliases.j2
+    dest: "{{ mutt_home_dir }}/.mutt/aliases"
+
+- name: Deploy additional mutt config files for inclusion in .muttrc
+  template:
+    src: muttrc/{{ item }}
+    dest: "{{ mutt_home_dir }}/.mutt/{{ item }}"
+    mode: "0600"
+  loop:
+    - mutt-colors-solarized-dark-256.muttrc

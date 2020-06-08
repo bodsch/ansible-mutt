@@ -1,0 +1,5 @@
+# {{ ansible_managed }}
+#
+{% for a in mutt_aliases %}
+alias {{ a }}
+{% endfor %}
