@@ -1,0 +1,4 @@
+# {{ ansible_managed }}
+#
+
+alias intern Intern <intern@matrix.lan>
