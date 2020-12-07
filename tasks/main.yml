@@ -22,24 +22,24 @@
     dest: "{{ mutt_home_dir }}/.muttrc"
     mode: 0755
 
-- name: Copy status script
+- name: copy status script
   template:
     src: mail.sh.j2
     dest: /usr/local/bin/mail.sh
     mode: 0755
 
-- name: Configure signatures
+- name: create signatures
   template:
     src: muttrc/signature.j2
     dest: "{{ mutt_home_dir }}/.mutt/signature"
-    # mode: 0750
+    mode: 0750
 
-- name: Configure aliases
+- name: create aliases
   template:
     src: muttrc/aliases.j2
     dest: "{{ mutt_home_dir }}/.mutt/aliases"
 
-- name: Deploy additional mutt config files for inclusion in .muttrc
+- name: deploy additional mutt config files for inclusion in .muttrc
   template:
     src: muttrc/{{ item }}
     dest: "{{ mutt_home_dir }}/.mutt/{{ item }}"
