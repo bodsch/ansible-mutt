@@ -15,6 +15,7 @@
     - .mutt/cache
     - .mutt/messages
     - .mutt/tmp
+    - .mutt/colors
 
 - name: create muttrc
   template:
@@ -38,11 +39,12 @@
   template:
     src: muttrc/aliases.j2
     dest: "{{ mutt_home_dir }}/.mutt/aliases"
+    mode: 0640
 
 - name: deploy additional mutt config files for inclusion in .muttrc
-  template:
-    src: muttrc/{{ item }}
-    dest: "{{ mutt_home_dir }}/.mutt/{{ item }}"
-    mode: "0600"
+  copy:
+    src: "{{ item }}"
+    dest: "{{ mutt_home_dir }}/.mutt/colors/{{ item }}"
+    mode: 0640
   loop:
-    - mutt-colors-solarized-dark-256.muttrc
+    "{{ mutt_colors_config }}"

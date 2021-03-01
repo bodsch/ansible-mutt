@@ -1,11 +1,10 @@
 ---
-- hosts: all
+- name: converge
+  hosts: all
   any_errors_fatal: false
+
   environment:
     NETRC: ''
-  vars:
-
-    # mutt_home_dir: /root
 
   roles:
     - role: ansible-mutt

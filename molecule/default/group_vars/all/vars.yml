@@ -1,0 +1,6 @@
+---
+
+mutt_aliases:
+  - intern Intern <intern@matrix.lan>
+
+mutt_imap_host: ''

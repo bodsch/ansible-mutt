@@ -16,15 +16,13 @@ set envelope_from_address = "{{ mutt_envelope_from_address }}"
 # The editor to edit the plaintext of the email in
 set editor="vim -c 'set syntax=mail ft=mail enc=utf-8'"
 
-# Farben
-source {{ mutt_home_dir }}/.mutt/mutt-colors-solarized-dark-256.muttrc
-
 # Mailserver
 {% if mutt_imap_host is defined and mutt_imap_host | length != 0 %}
-set folder   = imap://{{ mutt_imap_host }}
+set folder   = imap{{ 's' if mutt_imap_tls == true else '' }}://{{ mutt_imap_host }}
 {% endif %}
+
 {% if mutt_smtp_host is defined and mutt_smtp_host | length != 0 %}
-set smtp_url = smtp://{{ mutt_smtp_host }}
+set smtp_url = smtp{{ 's' if mutt_smtp_tls == true else '' }}://{{ mutt_smtp_host }}
 {% if mutt_smpt_pass is defined and mutt_smpt_pass | length != 0 %}
 set smtp_pass = "{{ mutt_smpt_pass }}"
 {% endif %}
@@ -107,3 +105,6 @@ set xterm_title = "%f [Msgs:%?M?%M/?%m%?n? neu:%n?%?o? alt:%o?%?d? gel:%d?%?F? F
 
 # Look status line
 color status {{ mutt_status_fontcolor | default('black') }} {{ mutt_status_color | default('white') }}
+
+# Farben
+source {{ mutt_home_dir }}/.mutt/colors/{{ mutt_color_theme }}

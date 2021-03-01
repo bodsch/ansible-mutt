@@ -6,15 +6,18 @@ mutt_envelope_from_address: ''
 mutt_from: ''
 mutt_realname: ''
 
+mutt_imap_tls: true
+# user@domain.lan:password@mail.domain.lan
 mutt_imap_host: ''
+mutt_smtp_tls: true
 mutt_smtp_host: ''
 # mutt_smpt_pass: ''
-
-mutt_aliases: []
 
 mutt_mutt_sent: +Sent
 mutt_mutt_draft: +Drafts
 mutt_mutt_trash: +Trash
+
+mutt_color_theme: mutt-colors-solarized-light-16.muttrc
 
 # mutt_local_inbox: INBOX
 # mutt_local_drafts: Drafts
@@ -22,5 +25,11 @@ mutt_mutt_trash: +Trash
 
 mutt_signature: ""
 
-mutt_aliases:
-  - intern Intern <intern@matrix.lan>
+mutt_aliases: []
+#  - intern Intern <intern@matrix.lan>
+
+mutt_colors_config:
+  - mutt-colors-solarized-dark-256.muttrc
+  - mutt-colors-solarized-light-256.muttrc
+  - mutt-colors-solarized-dark-16.muttrc
+  - mutt-colors-solarized-light-16.muttrc
