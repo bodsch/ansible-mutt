@@ -53,12 +53,14 @@ def get_vars(host):
 
     return result
 
+
 @pytest.mark.parametrize("packages", [
     "mutt",
 ])
 def test_packages(host, packages):
     p = host.package(packages)
     assert p.is_installed
+
 
 @pytest.mark.parametrize("dirs", [
     ".mutt",
