@@ -1,12 +1,12 @@
 ---
 
 - name: install mutt
-  package:
+  ansible.builtin.package:
     name: mutt
     state: present
 
 - name: Create .mutt directories
-  file:
+  ansible.builtin.file:
     path: "{{ mutt_home_dir }}/{{ item }}"
     state: directory
     mode: 0750
@@ -18,31 +18,31 @@
     - .mutt/colors
 
 - name: create muttrc
-  template:
+  ansible.builtin.template:
     src: muttrc/muttrc.j2
     dest: "{{ mutt_home_dir }}/.muttrc"
     mode: 0755
 
 - name: copy status script
-  template:
+  ansible.builtin.template:
     src: mail.sh.j2
     dest: /usr/local/bin/mail.sh
     mode: 0755
 
 - name: create signatures
-  template:
+  ansible.builtin.template:
     src: muttrc/signature.j2
     dest: "{{ mutt_home_dir }}/.mutt/signature"
     mode: 0750
 
 - name: create aliases
-  template:
+  ansible.builtin.template:
     src: muttrc/aliases.j2
     dest: "{{ mutt_home_dir }}/.mutt/aliases"
     mode: 0640
 
 - name: deploy additional mutt config files for inclusion in .muttrc
-  copy:
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ mutt_home_dir }}/.mutt/colors/{{ item }}"
     mode: 0640
