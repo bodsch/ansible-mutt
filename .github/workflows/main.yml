@@ -23,10 +23,9 @@ jobs:
       matrix:
         image:
           - archlinux:latest
-        python-version:
-          - '3.9'
-          - '3.10'
-          - '3.11'
+        python_version:
+          - "3.10.11"
+          - "3.11.3"
         ansible-version:
           - '6.7'
         scenario:
@@ -37,11 +36,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: 'ansible-mutt'
+          ref: ${{ github.event.workflow_run.head_branch }}
 
-      - name: set up python ${{ matrix.python-version }}
+      - name: 🐍 set up python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "${{ matrix.python_version }}"
 
       - name: install dependencies
         run: |
@@ -73,10 +73,9 @@ jobs:
           - debian:12
           - ubuntu:20.04
           - ubuntu:22.04
-        python-version:
-          - '3.9'
-          - '3.10'
-          - '3.11'
+        python_version:
+          - "3.10.11"
+          - "3.11.3"
         ansible-version:
           - '6.7'
         scenario:
@@ -87,11 +86,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: 'ansible-mutt'
+          ref: ${{ github.event.workflow_run.head_branch }}
 
-      - name: set up python ${{ matrix.python-version }}
+      - name: 🐍 set up python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "${{ matrix.python_version }}"
 
       - name: install dependencies
         run: |
