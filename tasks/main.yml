@@ -16,6 +16,8 @@
     - .mutt/messages
     - .mutt/tmp
     - .mutt/colors
+  loop_control:
+    label: "{{ item }}"
 
 - name: create muttrc
   ansible.builtin.template:
@@ -48,3 +50,6 @@
     mode: 0640
   loop:
     "{{ mutt_colors_config }}"
+  loop_control:
+    label: "{{ item }}"
+
