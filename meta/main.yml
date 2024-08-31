@@ -2,9 +2,12 @@
 
 galaxy_info:
   role_name: mutt
-  author: Bodo Schulz
+  namespace: bodsch
 
   description: install and configure mutt
+
+  author: Bodo Schulz
+
   license: Apache
 
   min_ansible_version: "2.9"
